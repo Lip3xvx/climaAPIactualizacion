@@ -1,0 +1,63 @@
+<form (submit)="submitLocation(cityName, countryCode)">
+    <main>
+      <section class="weather-app">
+        <div class="form">
+          <div class="searchBox">
+            <input type="text" placeholder="City" #cityName>
+            <input type="text" placeholder="Country code" #countryCode>
+            <button type="submit">Get Weather</button>
+          </div>
+  
+        </div>
+  
+  
+        <div *ngIf="weather">
+          <p class="city">{{weather.name}}</p>
+          <div class="celsius-container">
+            <p class="number">{{weather.main.temp.toFixed(0)}}</p>
+            <p class="celsius">°C</p>
+            <img src="../assets/images/profe2.png" alt="">
+          </div>
+  
+          <div class="details">
+  
+            <div class="detalles">
+              <p class="minmax">{{weather.main.temp_min}}min / {{weather.main.temp_max}}max </p>
+              <div class="wind">
+                <div class="icon">
+                  <img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAWdJREFUSEu11bFKHUEUxvHffQNTJQgmYJN02qmNQbBR8gbGTtAnSBA1RRSLiA8QSBr1AWKhXUASxVJICqsU0VjEoGCdgDIwG/buXfburnu3WXZ25vzPd87MNy09flo9jq8b4AXe4hlOsYpPVZIqAozgmI4kJvG5LKQIsIMZvMY7LGENX/C8CUA2xgNc4wZ98ecjfMBo/D7CHP4ki7v1IA1Zif34inGE4CfxnZ53juGYTFt9b0vKnsABtvESu1iMazcxhfdYCGNpBUWAv/iON9iLwS7Qj4e4jGOD+IEzPMkCSgoonPYYP/ELA00DhrCOaXyMzS5doirqQvahyVdVelAGEAIeYh6/62zTMpCOOVXOwb0B2W2awIu27z98KzLBonNQBpBWlWuCTZRoOSpILKStlE0A8kzwP6QOYAuzeIUNJApybbwOYAzBlrNrExNspEThKg3X59N4lQYr38/bx3UUVDoPPQfcAZIWQRkz2PCmAAAAAElFTkSuQmCC" />
+                </div>
+                <p class="wind-detail">{{weather.wind.speed}}</p>
+              </div>
+  
+              <div class="wind">
+                <div class="icon">
+                  <img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAXpJREFUSEvt1L9LlVEcx/HXHRqEIIiEliLcXGrIsRDEFEXEwcElggicbAtCCoUsKWhKcBBx6R9QF2kRqiHQoKnNQRTFfiDknMo3ngvPfbzPfe417nbPds75ns/7nM/5nFPS5FZqsr4WoNDheiy6hgn04QYuYR8LmMPPWpQiQD9WcSFH5Aj3sZwHqQXowke04Rue4wt+oSc51QiO0Yv1apA8QIxv4Dbe40EilNWYwjT20Ik/2YJqgA68xBi+4yb+1vB5DWHls2RdRWkWEDuNyyt7/hBLBVG5hw/4irA1FxCTYUt4Op/sJtJS1C7jd1K0iRdYKS9KnyDSMoRJzBapZuZPMv24/H/JSgN+oB1XcdAgIMrjkt9iIElfdxYQmb74H4DQi4BsJZZdyQI+4Q6e4vU5ThBLrmMbu4gfoMKi4dSLnME7hG31tlt4hUEs4lEWEP03eFKvYk7dDgJ2WA0QY6N4jLsNgiKqnzGeDknRZ9cg42x5C1BoYdMtOgX1i0AZYoQ9PQAAAABJRU5ErkJggg==" />
+                </div>
+                <p class="wind-detail">{{weather.main.humidity}}</p>
+              </div>
+  
+              <div class="wind">
+                <div class="icon">
+                  <img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAK5JREFUSEvt1TEOAUEYBeBvExFnIBIu4R4KoXAIJ1BTOIEelcI5XEHvDgoyspKxYdcWW0hm2jfvvZn3//9MpuGVNawvGVQmHEd0wREbXHNmHwuMccOpJv5Wg3suGoymaOGAQeGYAZ+gXYLPcA68+AajnDD8ItjBrsJwjxf/qV3soi7WmOcmWyyjyHpYleAx/6NBZdHqbkhFDonFXZWKnCaZ/57kuq/AT/vTl1kZ0wPiDFoZO0u5igAAAABJRU5ErkJggg==" />
+                </div>
+                <p class="wind-detail">{{weather.coord.lat}}</p>
+              </div>
+  
+              <div class="wind">
+                <div class="icon">
+                  <img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAZJJREFUSEvt1D9IVWEYx/HPzXSJ/uDQH5fAlqJFcW6oIWkqB8UEIRyKIBdRoSlxCIIiIhKiIZwkUGxMBxtqclKIliQaoiFqyCSoweKB98Dlek/n3OCCQ2c55znv+z7f9/k9fyqa/FSa7N+uBfyuiTz3ov8aQdMBeak7isu4n21oNIIjGEMPurAXG1jEQnqfxFU8CUgjgGE8xMGCynuLs/hcD5Cn7Y3kPM7ETR/hZQKdwyguJXsIc3kS1QN04h32YBz3ciK4hSl8xClslZVoBtfxDINVzrPLVMv8Ar24gtmygE84lpK6XgA4jyU8xUgtoFqebbQkZz/Rluz4nz31ImjHV7zHibKA0HIf9me6JkI9wAF8w3fEd6kyfYPTOIPXBSUa5bmCkDL6pBTgNm7iOfoKAKF/5CEqarpsH3TgA1oxgbs5kDuYxA8cx5eygNgXZReVkTXaA7xK9kVcw4Vk92M+r9H+psAAHuNQzqYYDTFOlqvXG5lFce5w6uYYdt34hTWsJuk2a+GNAgpyvHP5P6BQsj+3FEsZ6Ii9IAAAAABJRU5ErkJggg==" />
+                </div>
+                <p class="wind-detail">{{weather.coord.lon}}</p>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+      </section>
+    </main>
+  </form>
